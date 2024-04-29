@@ -1,3 +1,5 @@
+using Microsoft.Extensions.FileProviders;
+
 namespace MinimalApiVue
 {
     public class Program
@@ -35,7 +37,10 @@ namespace MinimalApiVue
             app.UseApiRoute();
 
             // 提供文件服務
-            app.UseFileServer();
+            app.UseFileServer(new FileServerOptions
+            {
+                FileProvider = new ManifestEmbeddedFileProvider(typeof(Program).Assembly, "wwwroot")
+            });
 
             app.Run();
         }
