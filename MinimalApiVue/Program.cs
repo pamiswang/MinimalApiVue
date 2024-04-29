@@ -34,6 +34,9 @@ namespace MinimalApiVue
             // 使用路由表
             app.UseApiRoute();
 
+            // 提供文件服務
+            app.UseFileServer();
+
             app.Run();
         }
     }
